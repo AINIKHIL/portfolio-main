@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — Contact Responses</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Small admin overrides */
+    body { padding: 40px 20px; }
+    .admin-container { max-width: 1000px; margin: 0 auto; }
+    .admin-login { max-width: 420px; margin: 140px auto; padding: 28px; border-radius: 12px; box-shadow: var(--shadow); background: var(--card-bg); border:1px solid var(--border-light); }
+    .admin-login h2 { margin-bottom: 12px; }
+    .admin-panel { display: none; }
+    .admin-panel.show { display: block; }
+    .admin-actions { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+    .admin-meta { color: var(--text-light); margin-bottom: 16px; }
+    .small-note { color: var(--text-light); font-size:0.95rem; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div id="loginBox" class="admin-login" aria-live="polite">
+      <h2>Admin Login</h2>
+      <p class="admin-meta">This is a client-side admin panel for local inspection only. It's not a secure server login — use carefully.</p>
+      <label for="adminPassword">Password</label>
+      <input id="adminPassword" type="password" placeholder="Enter admin password" style="width:100%; padding:10px; margin-top:8px; margin-bottom:12px; border-radius:6px; border:1px solid var(--border-light);" />
+      <div style="display:flex; gap:10px;">
+        <button id="btnLogin" class="btn btn-primary">Log in</button>
+        <button id="btnCancel" class="btn btn-secondary">Cancel</button>
+      </div>
+      <p class="small-note">Default password is set in <code>admin.js</code>. Change it there if you want a different one.</p>
+    </div>
+
+    <div id="adminPanel" class="admin-panel">
+      <h2>Contact Responses — Admin</h2>
+      <div class="admin-actions">
+        <button id="exportCsvAdmin" class="btn">Export CSV</button>
+        <button id="clearAllAdmin" class="btn btn-secondary">Clear All</button>
+        <button id="logoutBtn" class="btn">Logout</button>
+      </div>
+
+      <div id="adminEmpty" class="inbox-empty">No responses yet.</div>
+      <div id="adminList" class="inbox-list"></div>
+
+      <p class="small-note">LocalStorage key: <code>contact_submissions</code>. This admin page reads/writes the same storage as the contact form inbox in the main site.</p>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
